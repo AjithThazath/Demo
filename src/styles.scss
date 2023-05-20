@@ -1,0 +1,175 @@
+/**
+	@Authored By Ajith Thazath  
+	Created for Demo project
+**/
+/* You can add global styles to this file, and also import other style files */
+@import './variables.scss';
+@import 'ag-grid-community/styles/ag-grid.css';
+@import 'ag-grid-community/styles/ag-theme-alpine.css';
+@import './ag-grid.scss';
+
+html, body { height: 100%; }
+body { margin: 0; font-family: sans-serif; }
+
+#loginMatTab mat-tab-body {
+    padding:20px 10px
+}
+
+#loginMatTab .mat-mdc-tab-body-content{
+   min-height: 200px;
+//    overflow:hidden;
+}
+
+.width100{
+    width:100%
+}
+
+.height100{
+    height:100%
+}
+
+.backGround{
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    backdrop-filter: blur(10px);
+    top: 0px;
+    z-index: 1000;
+    left: 0px;
+}
+
+.card{
+    box-shadow: 4px 3px 15px 3px $shadow-grey;
+    margin: 1rem;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.cdk-overlay-container, .cdk-overlay-pane {
+    z-index: 1005 !important;
+}
+
+.boxShadow{
+    box-shadow: 0px 5px 15px #beb8b8;
+}
+
+.pointer{
+    cursor: pointer;
+}
+
+.title{
+    font-size: 1.5rem;
+    padding:10px;
+    color:#5e5e65;
+    font-weight:600
+}
+
+button:hover{
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    transition: ease-in-out 100ms;
+}
+
+.height100vh{
+    height:100vh
+}
+
+.mat-horizontal-content-container {
+    padding: 0px !important; 
+}
+
+.mat-stepper-label-position-bottom .mat-horizontal-stepper-header, .mat-vertical-stepper-header {
+    padding:10px !important;
+}
+
+.mat-mdc-tab-body-wrapper {
+    height:100%
+}
+
+
+.gridImage{
+    max-height: 200px;
+    max-width: 200px;
+}
+
+
+mat-sidenav  {
+    position: fixed !important;
+    top: 0;
+    bottom: 0;
+    // left: 0;
+    right: 0;
+    width:50%;
+    z-index: 99999 !important
+  }
+
+  mat-sidenav-container{
+    z-index: 99999 !important
+  }
+
+.adminSelect{
+    width: 150px;
+    padding: 5px;
+    outline: none;
+    border: 1px solid #cccc;
+    border-radius: 4px;
+}
+
+.adminButton{
+    // width:100px
+    padding:10px;
+    background-color: $main-color;
+    border-radius:10px;
+    margin:10px;
+    border:none;
+    color:white;
+
+}
+
+.textElipses{
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow:hidden
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+
+  .highLight:hover{
+    scale:1.1;
+    transition: ease-out 0.2s;
+}
+
+// app-admin-products .mat-mdc-tab-body-content{
+//     overflow: hidden !important
+// }
+
+app-admin-home .mat-mdc-tab-body-content{
+    overflow: hidden !important
+}
+
+.swal2-height-auto{
+    height: 100% !important;
+}
+
+mat-sidenav{
+    position: fixed !important;
+}
+
+mat-sidenav-container{
+    position:fixed !important;
+}
+
+@media(max-width: $mobile-max-width){
+    .mat-mdc-paginator-range-label{
+        visibility: hidden !important;
+    }
+}
+
+.mat-drawer-container{
+    position: unset!important;
+} 

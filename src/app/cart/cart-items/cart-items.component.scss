@@ -1,0 +1,114 @@
+/**
+	@Authored By Ajith Thazath  
+	Created for Demo project
+**/
+@import '../../../variables.scss';
+
+.container {
+    border: 1px solid #cccc;
+    margin: 10px;
+}
+
+img {
+    max-height: 200px;
+    max-width: 200px;
+    margin: 5px;
+    border: 1px solid #ccc;
+}
+
+.title {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.info {
+    padding: 10px;
+    height: 220px;
+    // border: 1px solid #ccc;
+    margin: 5px;
+    overflow: hidden;
+}
+
+.icon {
+    font: size 2rem;
+    // margin:10px;
+    cursor: pointer;
+    color: red;
+}
+
+.fonntSize1dot2rem {
+    font-size: 1.2rem
+}
+
+.fontBolder {
+    font-weight: 600;
+}
+
+.colorOrange {
+    color: orange
+}
+
+.total {
+    // border: 1px solid #cccc;
+    padding: 5px;
+    color: black;
+}
+
+mat-select {
+    margin: 10px;
+    margin-left: -20px;
+    border: 3px solid #cccc;
+    padding: 3px 10px;
+    border-radius: 5px;
+}
+
+mat-divider {
+    border-top-width: 3px
+}
+
+button {
+    width: 100%;
+    background-color: red;
+    color: white !important;
+}
+
+.maxWidth {
+    max-width: 70%;
+}
+
+
+@media(max-width:1000px) {
+    .info {
+        padding: 20px;
+        max-width: 95% !important;
+        height: 100%;
+        margin: 5px;
+    }
+
+    img {
+        max-height: 150px;
+        max-width: 150px;
+        margin: 5px;
+        // border: 1px solid #ccc;
+    }
+
+    .mobileDevice {
+        flex-direction: column !important;
+    }
+
+    .width100ForMobile {
+        width: 100%
+    }
+}
+
+@media(min-width: 1000px) and (max-width: $desktop-max-width) {
+    .info {
+        max-width: 70% !important;
+    }
+}
+
+// @media(min-width: $large-screen-min-width){
+//     .info{
+//         max-width: 90% !important ;
+//     }
+// }

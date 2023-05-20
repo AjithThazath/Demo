@@ -1,0 +1,40 @@
+<!-- /**
+	@Authored By Ajith Thazath  
+	Created for Demo project
+**/ -->
+<section fxLayout="column" fxLayoutAlign="center center">
+    <div class="width80 boxShadow container">
+        <div fxLayout="row" fxLayoutAlign="center center" class="width100 marginBottom">
+            <div fxLayout="row" fxLayoutAlign="center center">
+                <span class="title">My Profile </span>
+            </div>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="center center" class="marginBottom">
+            <img src="assets/male_avatar.png" *ngIf="user?.getSex() === 'MALE'">
+            <img src="assets/female_avatar.jpg" *ngIf="user?.getSex() === 'FEMALE'">
+        </div>
+        <div fxLayout="column" fxLayoutAlign="center center" *ngIf="isTablet" style="margin-bottom:15px;">
+            <button mat-button class="btnShadow" style="max-width:300px;" *ngFor="let btn of sideNavContent"
+                (click)="showSection(btn.action)">{{btn.name}}</button>
+        </div>
+        <mat-divider class="width100"></mat-divider>
+        <div fxLayout="row" class="marginTop10">
+
+            <div fxLayout="column" fxFlex="20" *ngIf="!isTablet">
+                <button mat-button class="btnShadow showHide" *ngFor="let btn of sideNavContent"
+                    (click)="showSection(btn.action)">{{btn.name}}</button>
+            </div>
+            <mat-divider [vertical]="true"></mat-divider>
+            <div fxFlex="" style=" margin:5px 10px;overflow: auto;">
+                <div *ngIf="section === 'details'">
+                    <app-user-details></app-user-details>
+                </div>
+                <div *ngIf="section === 'orders'">
+                    <app-my-orders></app-my-orders>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</section>

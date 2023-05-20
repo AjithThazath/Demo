@@ -1,0 +1,70 @@
+<!-- /**
+	@Authored By Ajith Thazath  
+	Created for Demo project
+**/ -->
+<div class="container">
+    <div class="width100" style="margin:20px 0px" fxLayout="row" fxLayoutAlign="space-between center">
+        <span class="title" *ngIf="!editMode">
+            Add Product
+        </span>
+        <span class="title" *ngIf="editMode">
+            Edit Product
+        </span>
+        <span class="material-icons-outlined pointer" (click)="cancel()">
+            cancel
+        </span>
+    </div>
+    <form fxLayout="column" fxLayoutAlign="space-evenly start" class="width100" [formGroup]="addEditProduct"
+        (ngSubmit)="addProd()">
+        <mat-form-field class="width100">
+            <mat-label>Title</mat-label>
+            <input type="text" matInput formControlName="title" placeholder="Ex. Product Title">
+        </mat-form-field>
+
+        <mat-form-field class="width100">
+            <mat-label>Description</mat-label>
+            <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="3"
+                cdkAutosizeMaxRows="3" formControlName="description"></textarea>
+        </mat-form-field>
+
+        <div fxLayout="column" fxLayoutAlign="space-evenly start">
+            <div class="margin10 width100  mobileDevice" fxLayout="row" fxLayoutAlign="space-between center">
+                <mat-label *ngIf="!editMode">Select Image</mat-label>
+                <!-- <mat-label *ngIf="editMode">Image</mat-label> -->
+                <input type="file" (change)="attachImage($event)" [hidden]="true" #uploadInput
+                    accept="image/png, image/jpeg,image/jpg" label="">
+                <div fxLayout="column" fxLayoutAlign="center center">
+                    <div *ngIf="addEditProduct.get('imageUrl')?.value">
+                        <img [src]="addEditProduct.get('imageUrl')?.value" *ngIf="addEditProduct.get('imageUrl')?.value"
+                            style="max-width: 150px;max-height:200px">
+                    </div>
+                    <button mat-raised-button color="primary" type="button" (click)="uploadInput.click()">{{editMode ?
+                        'Change Image' : 'Choose file'}}</button>
+                </div>
+            </div>
+
+        </div>
+
+
+        <mat-form-field class="width100">
+            <mat-label>Price</mat-label>
+            <input type="number" matInput formControlName="price" placeholder="Enter Price">
+        </mat-form-field>
+
+        <mat-form-field class="width100">
+            <mat-label>Quantity</mat-label>
+            <input type="number" matInput formControlName="quantity" placeholder="Enter Quantity">
+        </mat-form-field>
+
+        <div fxLayout="row" fxLayoutGap="20" fxLayoutAlign="center center" class="width100">
+            <button mat-raised-button color="warn" type="button" (click)="deleteProd()">Delete</button>
+            <button mat-raised-button  type="button" (click)="cancel()">Close</button>
+            <button mat-raised-button color="primary" type="submit" *ngIf="editMode"
+                [disabled]="!addEditProduct.valid">Update</button>
+            <button mat-raised-button color="primary" type="submit" *ngIf="!editMode"
+                [disabled]="!addEditProduct.valid">Add Product</button>
+        </div>
+
+    </form>
+
+</div>

@@ -1,0 +1,83 @@
+/**
+	@Authored By Ajith Thazath  
+	Created for Demo project
+**/
+@import '../../variables.scss';
+
+
+.container {
+    position: relative;
+    background-color: white;
+    box-shadow: 3px 4px 10px 3px #beb8b8;
+    // top: 30%;
+    // left: 20%;
+    z-index: 10001;
+    width: 60%;
+    padding: 5px;
+    bottom: 50px
+}
+
+.width100 {
+    width: 100%;
+}
+
+.tabs {
+    height: 100%;
+}
+
+
+mat-error {
+    font-size: 1rem;
+    width: 95%;
+    border: 2px dotted red;
+    padding: 5px;
+    margin: 0px 0px 10px 0px;
+    background-color: antiquewhite;
+    font-weight: 600;
+}
+
+.radio {
+    margin: 0px 10px 10px 10px;
+}
+
+.actionsBTNS{
+position: absolute;
+background: white;
+bottom: 0px;
+padding: 10px;
+margin-top: 5px;
+}
+
+.marginBTM50{
+    margin-bottom:50px
+}
+
+.margin10 {
+    margin: 10px
+}
+
+@media(max-width: $mobile-max-width) {
+    .mobileDevice {
+        flex-direction: column !important;
+    }
+}
+
+@media(max-height: 800px) {
+    mat-tab-group{
+        max-height:400px
+    }
+}
+
+@media(max-height: 400px) {
+    mat-tab-group{
+        max-height:200px
+    }
+}
+
+.sigUpRedirect {
+    color: #3f51b5;
+    text-decoration: underline;
+    font-style: italic;
+    margin: 10px 0px;
+    cursor: pointer;
+}

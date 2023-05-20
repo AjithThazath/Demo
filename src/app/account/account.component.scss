@@ -1,0 +1,51 @@
+/**
+	@Authored By Ajith Thazath  
+	Created for Demo project
+**/
+@import '../../variables.scss';
+
+section>div {
+    margin: 26px;
+    // position: relative;
+    // top: 45px;
+}
+
+.width80 {
+    width: 80%;
+
+}
+
+.marginBottom {
+    margin-bottom: 15px
+}
+
+.container {
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 25px;
+}
+
+img {
+    border-radius: 150px;
+}
+
+.marginTop10 {
+    margin-top: 10px
+}
+
+button {
+    // background-color: #cccc;
+    margin: 5px 10px;
+    // color:white;
+    box-shadow: 0px 1px 8px #BEB8B8;
+}
+
+@media(max-width: $mobile-max-width) {
+    .width80 {
+        width: 100%
+    }
+
+    .mobileDevice {
+        flex-direction: column !important;
+    }
+}

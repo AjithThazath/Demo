@@ -1,0 +1,39 @@
+<!-- /**
+	@Authored By Ajith Thazath  
+	Created for Demo project
+**/ -->
+<div class="container boxShadow height100">
+  <div class="gridHeight">
+    <ag-grid-angular style="width: 100%; height: 100%" class="ag-theme-alpine" [columnDefs]="columnDefs"
+      [defaultColDef]="defaultColDef" [rowData]="rowData" [rowHeight]="rowHeight" [animateRows]="true"
+      (gridReady)="onGridReady($event)" (rowClicked)="onSelectionChanged($event)"></ag-grid-angular>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="end center">
+    <mat-paginator [length]="total" (page)="handlePageEvent($event)" [pageSize]="pageLimit" [disabled]="false"
+      [showFirstLastButtons]="true" [pageSizeOptions]="[5,10,15]" [hidePageSize]="hidePageSize" [pageIndex]="0"
+      aria-label="Select page">
+    </mat-paginator>
+  </div>
+</div>
+
+<mat-sidenav-container >
+  <mat-sidenav #sidenav [position]="'end'" class="widthSideNav">
+    <div class="container height100 width100" fxLayout="column" fxLayoutAlign="space-between center" (clickOutside)="close()">
+      <div class="width100" style="margin:20px 0px" fxLayout="row" fxLayoutAlign="space-between center">
+        <span class="title">
+          Products
+        </span>
+        <span class="material-icons-outlined pointer" (click)="close()">
+          cancel
+        </span>
+      </div>
+      <mat-sidenav-content fxFlexFill>
+        <ag-grid-angular style="width: 100%; height: 100%" class="ag-theme-alpine" [columnDefs]="productsColumnDefs"
+          [defaultColDef]="defaultColDef" [rowData]="productForOrders" [rowHeight]="rowHeight" [animateRows]="true"
+          (gridReady)="onOrderProductGridReady($event)"></ag-grid-angular>
+      </mat-sidenav-content>
+
+    </div>
+  </mat-sidenav>
+
+</mat-sidenav-container>

@@ -1,0 +1,32 @@
+<!-- /**
+	@Authored By Ajith Thazath  
+	Created for Demo project
+**/ -->
+<section fxLayout="column" fxLayoutAlign="center center">
+    <div class="width75 boxShadow container">
+        <div fxLayout="row" fxLayoutAlign="space-between center" class="width100 marginBottom">
+            <div fxLayout="row" fxLayoutAlign="center center">
+                <span class="material-icons-outlined icon">shopping_cart_checkout </span>
+                <span class="title">My Cart ({{cartCount}})</span>
+            </div>
+            <button *ngIf="cartCount > 0" style="width:20%" mat-button (click)="showConfirm()">Proceed</button>
+        </div>
+        <mat-divider class="width100 marginBottom"></mat-divider>
+        <ng-container *ngIf="cartCount > 0">
+            <div *ngFor="let item of cartItems?.getItems()">
+                <app-cart-items [items]="item" [isEdit]="true" (itemChange)="refreshCart()"></app-cart-items>
+            </div>
+        </ng-container>
+        <ng-container *ngIf="cartCount === 0">
+            <app-no-data-found></app-no-data-found>
+        </ng-container>
+        <mat-divider class="width100 marginTop" *ngIf="cartCount > 0"></mat-divider>
+        <div *ngIf="cartCount > 0" class="fonntSize1dot2rem fontBolder colorOrange width100 total" fxLayout="row"
+            fxLayoutAlign="space-between start">
+            <span> Total </span>
+            <span> ₹ {{total}} </span>
+        </div>
+        <button *ngIf="cartCount > 0" mat-button (click)="showConfirm()">Proceed to place order</button>
+    </div>
+
+</section>

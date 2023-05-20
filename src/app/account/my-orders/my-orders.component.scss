@@ -1,0 +1,70 @@
+/**
+	@Authored By Ajith Thazath  
+	Created for Demo project
+**/
+@import '../../../variables.scss';
+
+.margin10 {
+    margin: 10px
+}
+
+.font1rem {
+    font-size: 1rem;
+}
+
+.fonntSize1dot2rem {
+    font-size: 1.2rem
+}
+
+.fontBolder {
+    font-weight: 600;
+}
+
+.colorOrange {
+    color: orange
+}
+
+.total {
+    // border: 1px solid #cccc;
+    padding: 5px;
+    color: black;
+}
+
+.marginTop {
+    margin: 25px 0px
+}
+
+mat-expansion-panel {
+    margin: 10px
+}
+
+.cancelled {
+    font-size: 1.2rem;
+    border: 1px solid red;
+    padding: 5px;
+    background: lightcoral;
+    border-radius: 5px;
+    font-weight: bolder;
+}
+
+button {
+    // width: 100%;
+    // background-color: red;
+    // color: white !important;
+}
+
+
+.container {
+    max-height: 440px;
+    overflow-y: auto
+}
+
+@media(max-width: $tab-max-width) {
+    .width80 {
+        width: 100%
+    }
+
+    .mobileDevice {
+        flex-direction: column !important;
+    }
+}

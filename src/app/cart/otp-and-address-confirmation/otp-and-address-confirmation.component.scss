@@ -1,0 +1,56 @@
+/**
+	@Authored By Ajith Thazath  
+	Created for Demo project
+**/
+@import '../../../variables.scss';
+
+.container {
+    min-height: 55%;
+    width: 80%;
+    background-color: white;
+    border-radius: 10px;
+    padding: 15px;
+    z-index: 1001;
+    position: absolute;
+    top: 15%;
+}
+
+.success {
+    color: blue;
+    font-size: 7rem
+}
+
+.matBodyStyle {
+    color: red;
+}
+
+.otpField {
+    width: 80%
+}
+
+.radio {
+    border: 3px solid $main-color;
+    padding: 30px;
+    margin: 15px 30px 30px 30px;
+    border-radius: 10px;
+}
+
+.value {
+    font-size: 1.3rem;
+    font-weight: bolder;
+}
+
+.desc {
+    font-style: italic;
+    font-size: 1rem;
+}
+
+.timerNormal {
+    font-size: 1.1rem;
+    padding: 0px 20px 20px 20px;
+    font-weight: bolder;
+}
+
+.timerCriticalColor {
+    color: red
+}

@@ -1,0 +1,10 @@
+<!-- /**
+	@Authored By Ajith Thazath  
+	Created for Demo project
+**/ -->
+<app-header></app-header>
+<div class="backGround" *ngIf="showLoader"></div>
+<mat-progress-spinner class="spinner" [color]="'primary'" [mode]="'indeterminate'"
+	*ngIf="showLoader"></mat-progress-spinner>
+
+<router-outlet></router-outlet>

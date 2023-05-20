@@ -1,0 +1,60 @@
+/**
+	@Authored By Ajith Thazath  
+	Created for Demo project
+**/
+@import '../../variables.scss';
+
+section>div {
+    margin: 26px;
+    // position: relative;
+    // top: 45px;
+}
+
+.width75 {
+    width: 75%
+}
+
+.icon {
+    font-size: 2rem
+}
+
+mat-divider {
+    border-top-width: 3px
+}
+
+.marginTop {
+    margin: 25px 0px
+}
+
+.fonntSize1dot2rem {
+    font-size: 1.2rem
+}
+
+.fontBolder {
+    font-weight: 600;
+}
+
+.colorOrange {
+    color: orange
+}
+
+.total {
+    // border: 1px solid #cccc;
+    padding: 5px;
+    color: black;
+}
+
+button {
+    width: 100%;
+    background-color: orange;
+    color: white !important;
+}
+
+.marginBottom {
+    margin-bottom: 15px
+}
+
+.container {
+    padding: 10px;
+    border-radius: 10px;
+}

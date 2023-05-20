@@ -1,0 +1,20 @@
+/**
+	@Authored By Ajith Thazath  
+	Created for Demo project
+**/
+
+@import "../../../../variables.scss";
+
+
+.margin10 {
+    margin: 10px;
+    margin-bottom: 26px;
+}
+
+@media(max-width: $mobile-max-width) {
+    .mobileDevice {
+        flex-direction: column !important;
+    }
+
+
+}

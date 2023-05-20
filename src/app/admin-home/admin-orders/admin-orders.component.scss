@@ -1,0 +1,23 @@
+/**
+	@Authored By Ajith Thazath  
+	Created for Demo project
+**/
+
+@import '../../../variables.scss';
+
+.container {
+	padding: 20px;
+}
+.gridHeight{
+    height:85%
+}
+@media(max-width: $mobile-max-width) {
+    .widthSideNav {
+        width: 80%;
+    }
+
+    .gridHeight{
+        height:80%
+    }
+
+}

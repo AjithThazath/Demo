@@ -1,0 +1,45 @@
+<!-- /**
+	@Authored By Ajith Thazath  
+	Created for Demo project
+**/ -->
+<div class="container boxShadow">
+    <div fxLayout="row" class="mobileDevice" fxLayoutAlign="start space-between start">
+        <span fxLayoutAlign="center center" class="width100ForMobile">
+            <img src="{{item?.getImageUrl()}}">
+        </span>
+        <div fxLayout="column" fxLayoutAlign="space-between start" class="info">
+            <div class="title width100 fonntSize1dot2rem" fxLayout="row" fxLayoutAlign="space-between start">
+                <span>{{item?.getTitle()}}</span>
+                <span class="material-icons-outlined icon" (click)="removeFromCart()" *ngIf="isEdit"
+                    matTooltip="{{REMOVE_FROM_CART_TOOLTIP}}"> delete</span>
+                <!-- <button  style="width:20%" mat-button (click)="removeFromCart()" *ngIf="isEdit">Remove From Cart</button> -->
+            </div>
+            <div class="textElipses maxWidth" matTooltip="{{item?.getDescription()}}">{{item?.getDescription()}}</div>
+            <div class="width100">
+                <div class="fonntSize1dot2rem fontBolder width100" fxLayout="row" fxLayoutAlign="space-between center">
+                    <span>Quantity:</span>
+                    <span style="width:10%">
+                        <mat-select [value]="item?.getQuantity()" (selectionChange)="qtyChange($event)"
+                            [disabled]="!isEdit">
+                            <mat-option *ngFor="let val of qty" [value]="val">{{val}}</mat-option>
+                        </mat-select>
+                    </span>
+                </div>
+                <div class="fonntSize1dot2rem fontBolder colorOrange width100" fxLayout="row"
+                    fxLayoutAlign="space-between start">
+                    <span>Price : </span> <span> ₹ {{item?.getPrice()}}</span>
+                </div>
+            </div>
+            <mat-divider class="width100"></mat-divider>
+            <div class="fonntSize1dot2rem fontBolder colorOrange width100 total" fxLayout="row"
+                fxLayoutAlign="space-between start">
+                <span> Total </span>
+                <span> ₹ {{total}} </span>
+            </div>
+        </div>
+        <div>
+
+        </div>
+    </div>
+
+</div>

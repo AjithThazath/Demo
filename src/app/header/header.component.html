@@ -1,0 +1,47 @@
+<!-- /**
+	@Authored By Ajith Thazath  
+	Created for Demo project
+**/ -->
+<div fxLayout="row" fxLayoutAlign="space-between center" class="header">
+    <div fxLayout="row" fxLayoutAlign="space-around center" (click)="routeHome()" class="pointer">
+        <span class="material-icons-outlined size1rem">
+            local_mall
+        </span>
+        <span class="appTitle waviy">
+            <span style="--i:1">M</span>
+            <span style="--i:2">y</span>
+            <span> &nbsp; </span>
+            <span style="--i:3">S</span>
+            <span style="--i:4">h</span>
+            <span style="--i:5">o</span>
+            <span style="--i:6">p</span>
+            <span style="--i:7">p</span>
+            <span style="--i:8">i</span>
+            <span style="--i:9">n</span>
+            <span style="--i:10">g</span>
+            <span> &nbsp; </span>
+            <span style="--i:11">C</span>
+            <span style="--i:12">a</span>
+            <span style="--i:13">r</span>
+            <span style="--i:14">t</span>
+        </span>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="15">
+        <span class="items" *ngIf="!isLoggedIn" (click)="showLogin()">Login</span>
+        <span class="material-icons-outlined" *ngIf="isLoggedIn" [matMenuTriggerFor]="menu"> account_circle </span>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item *ngFor="let btn of profileOpt">
+                <span (click)="action(btn.action)">{{btn.name}}</span>
+            </button>
+        </mat-menu>
+        <div fxLayout="row" fxLayoutAlign="center center" *ngIf="isLoggedIn" (click)="gotToCart()">
+            <span class="material-icons-outlined">shopping_cart</span>
+            <span class="cartCount" *ngIf="cartCount > 0">{{cartCount}}</span>
+        </div>
+    </div>
+
+</div>
+
+<div *ngIf="isLoginClicked" fxLayout="row" fxLayoutAlign="center center" class="loginCompo">
+    <app-login (cancelClicked)="loginClose()" class="loginComp"></app-login>
+</div>

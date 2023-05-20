@@ -1,0 +1,16 @@
+/**
+	@Authored By Ajith Thazath  
+	Created for Demo project
+**/
+.container {
+    box-shadow: 0px 1px 8px #BEB8B8;
+    padding: 10px;
+}
+
+[readonly=true] {
+    cursor: not-allowed;
+}
+
+.radio {
+    margin: 10px 0px
+}

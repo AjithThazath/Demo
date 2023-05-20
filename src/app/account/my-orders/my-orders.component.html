@@ -1,0 +1,68 @@
+<!-- /**
+	@Authored By Ajith Thazath  
+	Created for Demo project
+**/ -->
+<div class="container" infinite-scroll [infiniteScrollDistance]="200" (scrolled)="onScroll()" [scrollWindow]="false">
+  <mat-accordion *ngIf="orders.length>0">
+    <mat-expansion-panel *ngFor="let order of orders">
+      <mat-expansion-panel-header>
+        <mat-panel-title fxLayout="row" fxLayoutAlign="space-between center">
+          <span>Order ID : #{{order?.getOrderId()}}</span>
+
+          <span>Total Amount : ₹ {{order?.getTotalAmount()}}</span>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div fxLayout="row" class="mobileDevice" fxLayoutAlign="space-between center" style="margin:10px 10px 20px 10px">
+        <span style="font-weight: bolder;">Date : {{order?.getorderDate() | date :'medium'}}</span>
+        <div fxLayout="row" class="mobileDevice">
+          <button mat-button color="primary" (click)="downloadInvoice(order)"
+            *ngIf="order?.getStatus() !== 'CANCELLED'">Download Invoice</button>
+          <button mat-button color="warn" (click)="cancelOrder(order)"
+            *ngIf="!CANNOT_BE_CANCELLED.includes(order.getStatus())">Cancel Order</button>
+        </div>
+      </div>
+      <div *ngIf="!isMobileDevice">
+        <mat-stepper #stepperNormal [linear]="true" [labelPosition]="'bottom'"
+          *ngIf="order?.getStatus() !== 'CANCELLED'">
+          <mat-step [editable]="false" *ngFor="let stat of possibleStatus;let i = index" [editable]="false"
+            [completed]="showStatus(order,i)">
+            <ng-template matStepLabel>{{stat.value}}</ng-template>
+          </mat-step>
+        </mat-stepper>
+      </div>
+      <div *ngIf="isMobileDevice" fxLayout="row" fxLayoutAlign="center center">
+        <mat-vertical-stepper #steppervertical [linear]="true" [labelPosition]="'bottom'"
+          *ngIf="order?.getStatus() !== 'CANCELLED'">
+          <mat-step [editable]="false" *ngFor="let stat of possibleStatus;let i = index" [editable]="false"
+            [completed]="showStatus(order,i)">
+            <ng-template matStepLabel>{{stat.value}}</ng-template>
+          </mat-step>
+        </mat-vertical-stepper>
+      </div>
+
+      <div *ngIf="order?.getStatus() === 'CANCELLED'" fxLayout="row" fxLayoutAlign="center center" class="cancelled">
+        <span>This order has been cancelled </span>
+      </div>
+      <!-- <div class="font1rem fontBolder colorOrange width100 total boxShadow" fxLayout="column"
+        fxLayoutAlign="start start" fxLayoutGap="15">
+        <span>Order ID : {{order?.getOrderId()}}</span>
+        <span>Date : {{order?.getorderDate() | date :'medium'}}</span>
+        <span>Status : {{getStatusValue(order?.getStatus()) }}</span>
+      </div> -->
+      <div *ngFor="let prod of order.getProducts()">
+        <app-cart-items [items]="prod" [isEdit]="false"></app-cart-items>
+      </div>
+      <mat-divider class="width100 marginTop"></mat-divider>
+      <div class="fonntSize1dot2rem fontBolder colorOrange width100 total" fxLayout="row"
+        fxLayoutAlign="space-between start">
+        <span> Total </span>
+        <span> ₹ {{order?.getTotalAmount()}} </span>
+      </div>
+
+    </mat-expansion-panel>
+  </mat-accordion>
+
+  <ng-container *ngIf="orders.length === 0">
+    <app-no-data-found></app-no-data-found>
+  </ng-container>
+</div>

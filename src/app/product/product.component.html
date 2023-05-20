@@ -1,0 +1,32 @@
+<!-- /**
+	@Authored By Ajith Thazath  
+	Created for Demo project
+**/ -->
+<div class="backGround" *ngIf="product" (click)="close()"></div>
+<div class="container" fxLayout="row" fxLayoutAlign="center center" *ngIf="product" >
+    <mat-card class="card" style="max-width:50%" (click)="$event.stopPropagation()">
+        <mat-card-header fxLayout="row" fxLayoutAlign="space-between center">
+            <mat-card-title>{{product.getTitle()}}</mat-card-title>
+            <span class="material-icons-outlined" (click)="close()"> cancel</span>
+        </mat-card-header>
+        <div fxLayout="row" fxLayoutAlign="center center">
+            <img mat-card-image src="{{product.getImageUrl()}}" alt="{{product.getTitle()}}">
+        </div>
+        <mat-card-content>
+            <span class="desc  maxWidth" matTooltip="{{product.getDescription()}}">{{product.getDescription()}} </span><br>
+            <span class="price"> ₹ {{product.getPrice()}}</span>
+        </mat-card-content>
+        <mat-card-actions>
+            <div fxLayout="rsow" fxLayoutAlign="start center" class="desc">
+                <span>Quantity</span>
+                <mat-select [(value)]="selectedQuantity">
+                    <mat-option *ngFor="let val of qty" [value]="val">{{val}}</mat-option>
+                </mat-select>
+
+            </div>
+            <div fxLayout="row" fxLayoutAlign="space-between center">
+                <button mat-button (click)="addToCart()">Add to Cart</button>
+            </div>
+        </mat-card-actions>
+    </mat-card>
+</div>

@@ -1,0 +1,108 @@
+<!-- /**
+	@Authored By Ajith Thazath  
+	Created for Demo project
+**/ -->
+<div class="backGround" (click)="emitClose()"></div>
+<section fxLayout="row" fxLayoutAlign="center center">
+    <div class="container boxShadow">
+
+        <mat-tab-group #matTab [selectedIndex]="selectedTab" (selectedTabChange)="tabChange($event)">
+            <mat-tab *ngFor="let step of steps" [disabled]="step.disable" [bodyClass]="'matBodyStyle'">
+                <ng-template mat-tab-label>
+                    <mat-icon class="example-tab-icon" *ngIf="step.status === COMPLETED">check_circle</mat-icon>
+                    <mat-icon class="example-tab-icon"
+                        *ngIf="step.status === NOT_COMPLETE">indeterminate_check_box</mat-icon>
+                    {{step.value}}
+                </ng-template>
+                <form [formGroup]="validationForm">
+                    <div *ngIf="step.value === ADDRESSBLOCK" fxLayout="column" fxLayoutAlign="center stretch"
+                        style="height:100%">
+                        <span class="title" style="font-size:1rem">{{CONFIRM_ADDRESS}}</span>
+                        <mat-form-field class="width100">
+                            <mat-label>Mobile Number</mat-label>
+                            <input type="text" matInput formControlName="mobile_number" [readonly]="!isEdit"
+                                placeholder="Ex. Teddy Eric">
+                        </mat-form-field>
+                        <mat-form-field class="width100">
+                            <mat-label>Adress : </mat-label>
+                            <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize"
+                                cdkAutosizeMinRows="5" [readonly]="!isEdit" cdkAutosizeMaxRows="5"
+                                formControlName="address"></textarea>
+                        </mat-form-field>
+                        <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="20">
+                            <button mat-raised-button color="warn" (click)="emitClose()">Close</button>
+                            <button mat-raised-button color="primary" *ngIf="!isEdit"
+                                (click)="isEdit = true">Edit</button>
+                            <button mat-raised-button color="primary" *ngIf="isEdit"
+                                (click)="isEdit = false">Cancel</button>
+                            <button mat-raised-button color="primary" *ngIf="isEdit" (click)="update()"
+                                [disabled]="!validationForm.get('mobile_number').valid || !validationForm.get('address').valid">Update</button>
+                            <button mat-raised-button color="primary" *ngIf="!isEdit" (click)="next(ADDRESSBLOCK)"
+                                [disabled]="!validationForm.get('mobile_number').valid || !validationForm.get('address').valid">Proceed</button>
+                        </div>
+                    </div>
+                    <div *ngIf="step.value === VALIDATEOTP" fxLayout="column" fxLayoutAlign="center center"
+                        style="height:100%;margin-top: 50px;">
+
+                        <mat-form-field class="otpField">
+                            <mat-label>{{ENTER_OTP_MESSAGE}}</mat-label>
+                            <input type="text" matInput formControlName="otp" placeholder="Enter OTP"
+                                [readonly]="validationForm.get('otpVerified').value">
+                        </mat-form-field>
+                        <div *ngIf="!showOTPExpired" fxLayout="row" fxLayoutAlign="center center"
+                            class="width100 timerNormal" [ngClass]="showCritical ? 'timerCriticalColor' : ''">
+                            Time Remaining {{dispTime}}
+                        </div>
+                        <div *ngIf="showOTPExpired" fxLayout="row" fxLayoutAlign="center center"
+                            class="timerNormal timerCriticalColor">
+                            {{OTP_EXPIRED}}
+                        </div>
+
+                        <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="20">
+                            <button mat-raised-button color="warn" (click)="emitClose()">Close</button>
+                            <button mat-raised-button color="primary" (click)="generateOTP()" *ngIf="otpInvalid">Resend
+                                OTP</button>
+                            <button mat-raised-button color="primary" (click)="placeOrder()"
+                                [disabled]="!validationForm.get('otpVerified').valid || !validationForm.get('otp').valid">Proceed</button>
+                        </div>
+                    </div>
+                    <div *ngIf="step.value === SUCCESS" fxLayout="column" fxLayoutAlign="center center"
+                        style="height:100%">
+                        <span class="material-icons-outlined success">thumb_up</span>
+                        <span class="title">{{ORDER_PACED_TITLE}}</span>
+                        <span class="title">Order ID : &nbsp;{{orderId}}</span>
+
+                        <span class="title" style="font-size:1rem">{{ORDER_PACED_BODY}}</span>
+                        <span class="title" style="font-size:1rem">Happy Shopping</span>
+                        <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="20">
+                            <button mat-raised-button color="primary" (click)="goHome()">Go Home</button>
+                            <button mat-raised-button color="primary" (click)="goToMyOrders()">Go to my Orders</button>
+
+                        </div>
+                    </div>
+                    <div *ngIf="step.value === SELECT_PAYMENT" fxLayout="column" fxLayoutAlign="center center"
+                        style="height:100%">
+                        <mat-label class="title" style="margin-top:15px">Select mode of Payment</mat-label>
+                        <div class="radio boxShadow" fxLayout="column" fxLayoutAlign="center center">
+                            <mat-radio-group>
+                                <mat-radio-button *ngFor="let opt of paymentOption">
+                                    <mat-option [value]="opt.value">
+                                        <div fxLayout="column" fxLayoutAlign="start start">
+                                            <span class="value"> {{opt.value}}</span>
+                                            <span class="desc"> {{opt.desc}}</span>
+                                        </div>
+                                    </mat-option>
+                                </mat-radio-button>
+                            </mat-radio-group>
+                        </div>
+                        <span class="title" style="font-size:1rem"> {{MODE_OF_PAYMENT_MSG}}</span>
+                        <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="20">
+                            <button mat-raised-button color="warn" (click)="emitClose()">Close</button>
+                            <button mat-raised-button color="primary" (click)="next(SELECT_PAYMENT)">Next</button>
+                        </div>
+                    </div>
+                </form>
+            </mat-tab>
+        </mat-tab-group>
+    </div>
+</section>
